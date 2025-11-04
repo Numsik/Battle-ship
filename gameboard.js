@@ -1,4 +1,4 @@
-import Ship from "./ship";
+import Ship from "./ship.js";
 
 class GameBoard {
   constructor() {
@@ -7,14 +7,14 @@ class GameBoard {
     this.missedAttacks = [];
   }
 
-  placeShip(ship, startX, startY, direction) {
+  placeShip(ship, x, y, direction) {
     if (direction === "horizontal") {
       for (let i = 0; i < ship.length; i++) {
-        this.board[startY][startX + i] = ship;
+        this.board[y][x + i] = ship;
       }
-    } else if (direction === "vertical") {
+    } else {
       for (let i = 0; i < ship.length; i++) {
-        this.board[startY + i][startX] = ship;
+        this.board[y + i][x] = ship;
       }
     }
     this.ships.push(ship);
@@ -24,10 +24,10 @@ class GameBoard {
     const target = this.board[y][x];
     if (target instanceof Ship) {
       target.hit();
-      console.log(`Hit! Ship has ${target.hits} hits`);
+      console.log(`Hit!`);
     } else {
       this.missedAttacks.push([x, y]);
-      console.log("Miss");
+      console.log(`Miss!`);
     }
   }
 

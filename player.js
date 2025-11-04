@@ -6,7 +6,6 @@ class Player {
     this.board = new GameBoard();
   }
 
-  // tah na soupeřovu desku
   makeMove(opponentBoard, x, y) {
     opponentBoard.receiveAttack(x, y);
   }
